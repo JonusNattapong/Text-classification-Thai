@@ -1,8 +1,14 @@
+import os
 from huggingface_hub import HfApi, HfFolder, upload_file
+
+# HF_TOKEN: load from environment to avoid committing secrets
+token = os.getenv('HF_TOKEN')
+if token is None:
+    raise EnvironmentError('Please set the HF_TOKEN environment variable before running this script')
 
 # Set your Hugging Face token (replace 'your_token_here' with your actual token)
 # You can get your token from https://huggingface.co/settings/tokens
-HF_TOKEN = 'your_token_here'
+HF_TOKEN = token
 REPO_ID = 'your-username/thai-text-classification-model'  # Change to your repo name
 
 api = HfApi()
