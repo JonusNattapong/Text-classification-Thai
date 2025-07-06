@@ -2,8 +2,8 @@ from huggingface_hub import HfApi, HfFolder, upload_file
 
 # Set your Hugging Face token (replace 'your_token_here' with your actual token)
 # You can get your token from https://huggingface.co/settings/tokens
-HF_TOKEN = 'your_token_here'
-REPO_ID = 'your-username/thai-text-classification-model'  # Change to your repo name
+HF_TOKEN = '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'
+REPO_ID = 'ZombitX64/Thai-text-classification'  # Change to your repo name
 
 api = HfApi()
 HfFolder.save_token(HF_TOKEN)

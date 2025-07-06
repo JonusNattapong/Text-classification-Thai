@@ -83,6 +83,33 @@ Predicted sentiment: neutral (confidence: 0.83)
 
 ---
 
+ 
+## 📊 Evaluation Results
+
+หลังจากเทรนและประเมินโมเดล จะได้กราฟผลลัพธ์ดังนี้ (ไฟล์ในโฟลเดอร์ `assets`):
+
+ 
+### Confusion Matrix
+![Confusion Matrix](assets/confusion_matrix.png)
+*แสดงจำนวนตัวอย่างที่โมเดลทำนายถูกและผิดในแต่ละคลาส*  
+
+ 
+### Per-class F1 Score
+![F1 Scores](assets/f1_scores.png)
+*เปรียบเทียบค่า F1-score ของแต่ละคลาส sentiment เพื่อวัดประสิทธิภาพ*  
+
+ 
+### Per-class Accuracy
+![Per-class Accuracy](assets/per_class_accuracy.png)
+*แสดงความแม่นยำ (accuracy) ในแต่ละคลาส แยกตาม positive, negative, neutral*  
+
+ 
+### Sentiment Distribution
+![Sentiment Distribution](assets/sentiment_distribution.png)
+*แสดงการกระจายของ label ในชุดข้อมูล validation/test ว่าเป็น positive, negative, neutral อัตราส่วนเท่าใด*  
+
+---
+
 ## 📜 License
 MIT
 
