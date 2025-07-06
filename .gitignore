@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
+
+# Data
+*.jsonl
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.zip
+*.tar.gz
+*.h5
+*.keras
+*.pkl
+
+# Model files
+thai_text_classification_model.*
+thai_tokenizer.pkl
+label_encoder.pkl
+
+# Environment
+.venv/
+env/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
