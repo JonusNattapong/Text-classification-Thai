@@ -1,13 +1,13 @@
 # Thai Text Sentiment Classification
 
-A deep learning project for sentiment analysis of Thai text using Hugging Face datasets and Keras LSTM.
+A deep learning project for sentiment analysis of Thai text using Hugging Face datasets and Keras Bidirectional LSTM + Attention.
 
 ---
 
 ## 🚀 Features
 - **Thai Sentiment Classification**: Classifies text as `positive`, `negative`, or `neutral`.
+- **Bidirectional LSTM + Attention**: Understands context from both directions and focuses on important words in the sentence.
 - **Pretrained Tokenizer**: Uses Hugging Face's Thai tokenizer.
-- **LSTM Model**: Deep learning with Keras for sequence modeling.
 - **Ready for Hugging Face Hub**: Scripts to upload model and assets.
 
 ---
@@ -25,6 +25,16 @@ Install all dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+
+---
+
+## 🏗️ Model Architecture
+
+- **Embedding Layer**: Converts words to vectors
+- **Bidirectional LSTM Layer**: Reads text both forward and backward for better context
+- **Attention Layer**: Focuses on important words in the sequence
+- **Dropout Layer**: Prevents overfitting
+- **Dense (Softmax) Layer**: Outputs class probabilities
 
 ---
 
@@ -71,40 +81,27 @@ python test_sentiment.py
 
 ---
 
-## ✨ Example Output
-```
-Test 1: ร้านนี้อร่อยมาก ชอบมากเลย
-Predicted sentiment: positive (confidence: 0.99)
-Test 2: แย่มาก บริการแย่ อาหารไม่อร่อย
-Predicted sentiment: negative (confidence: 0.99)
-Test 3: ปกติ ไม่ดีไม่แย่
-Predicted sentiment: neutral (confidence: 0.83)
-```
-
----
-
- 
 ## 📊 Evaluation Results
 
 หลังจากเทรนและประเมินโมเดล จะได้กราฟผลลัพธ์ดังนี้ (ไฟล์ในโฟลเดอร์ `assets`):
 
- 
 ### Confusion Matrix
+
 ![Confusion Matrix](assets/confusion_matrix.png)
 *แสดงจำนวนตัวอย่างที่โมเดลทำนายถูกและผิดในแต่ละคลาส*  
 
- 
 ### Per-class F1 Score
+
 ![F1 Scores](assets/f1_scores.png)
 *เปรียบเทียบค่า F1-score ของแต่ละคลาส sentiment เพื่อวัดประสิทธิภาพ*  
 
- 
 ### Per-class Accuracy
+
 ![Per-class Accuracy](assets/per_class_accuracy.png)
 *แสดงความแม่นยำ (accuracy) ในแต่ละคลาส แยกตาม positive, negative, neutral*  
 
- 
 ### Sentiment Distribution
+
 ![Sentiment Distribution](assets/sentiment_distribution.png)
 *แสดงการกระจายของ label ในชุดข้อมูล validation/test ว่าเป็น positive, negative, neutral อัตราส่วนเท่าใด*  
 

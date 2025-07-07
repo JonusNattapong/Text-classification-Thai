@@ -9,7 +9,7 @@ if token is None:
 # Set your Hugging Face token (replace 'your_token_here' with your actual token)
 # You can get your token from https://huggingface.co/settings/tokens
 HF_TOKEN = token
-REPO_ID = 'your-username/thai-text-classification-model'  # Change to your repo name
+REPO_ID = 'ZombitX64/ThaiSentiment-BiLSTM-Attn'  # Change to your repo name
 
 api = HfApi()
 HfFolder.save_token(HF_TOKEN)

@@ -3,8 +3,7 @@ from transformers import AutoTokenizer
 import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Embedding, LSTM, Dense, Dropout, Bidirectional, Layer
-import tensorflow as tf
+from tensorflow.keras.layers import Embedding, LSTM, Dense, Dropout
 
 from sklearn.preprocessing import LabelEncoder
 from tensorflow.keras.utils import to_categorical
@@ -40,27 +39,12 @@ print(f"Number of unique labels: {y.shape[1]}")
 print(f"Label distribution (sum per class): {y.sum(axis=0)}")
 print(f"Label classes: {le.classes_}")  # Show actual label names
 
-
-# Simple Attention Layer
-class Attention(Layer):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-    def build(self, input_shape):
-        self.W = self.add_weight(name='att_weight', shape=(input_shape[-1], 1), initializer='random_normal', trainable=True)
-        self.b = self.add_weight(name='att_bias', shape=(input_shape[1], 1), initializer='zeros', trainable=True)
-        super().build(input_shape)
-    def call(self, x):
-        e = tf.keras.backend.tanh(tf.keras.backend.dot(x, self.W) + self.b)
-        a = tf.keras.backend.softmax(e, axis=1)
-        output = x * a
-        return tf.keras.backend.sum(output, axis=1)
-
+# Build model
 model = Sequential([
     Embedding(input_dim=tokenizer_hf.vocab_size, output_dim=128),
-    Bidirectional(LSTM(64, return_sequences=True)),
-    Attention(),
-    Dropout(0.5),
-    Dense(y.shape[1], activation='softmax')
+    LSTM(64),
+    Dropout(0.5),  # Add dropout for regularization
+    Dense(y.shape[1], activation='softmax')  # Change back to softmax for single-label
 ])
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])  # Change back to categorical_crossentropy
